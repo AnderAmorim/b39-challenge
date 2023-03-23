@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mongo2:
+    image: mongo:latest
+    command: mongod --replSet rs0 --bind_ip_all
+    networks:
+      - mongo_network
+
+  mongo3:
+    image: mongo:latest
+    command: mongod --replSet rs0 --bind_ip_all
+    networks:
+      - mongo_network
+
+networks:
+  mongo_network:

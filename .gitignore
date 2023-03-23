@@ -1,0 +1,12 @@
+# VS Code
+# .vscode
+
+# Auto-generated
+node_modules
+package-lock.json
+
+# Environment
+.env
+
+# MISC
+.DS_Store

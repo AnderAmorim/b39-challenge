@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "nome": "Gêneros musicais",
+    "submenus": [
+      {
+        "id": "2",
+        "nome": "Pop",
+        "submenus": [
+          {
+            "id": "5",
+            "nome": "Sia"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "nome": "Metal",
+        "submenus": [
+          {
+            "id": "4",
+            "nome": "Nightwish",
+            "submenus": [
+              {
+                "id": "9",
+                "nome": "Once"
+              }
+            ]
+          },
+          {
+            "id": "6",
+            "nome": "Disturbed",
+            "submenus": [
+              {
+                "id": "7",
+                "nome": "Immortalized",
+                "submenus": {
+                  "id": "8",
+                  "nome": "The Sound of Silence"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "nome": "Gêneros de filmes"
+  }
+]

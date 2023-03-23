@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "2",
+    "name": "Pop",
+    "relatedId": "1"
+  },
+  {
+    "_id": "1",
+    "name": "Gêneros musicais"
+  },
+  {
+    "_id": "3",
+    "name": "Metal",
+    "relatedId": "1"
+  },
+  {
+    "_id": "4",
+    "name": "Nightwish",
+    "relatedId": "3"
+  },
+  {
+    "_id": "5",
+    "name": "Sia",
+    "relatedId": "2"
+  },
+  {
+    "_id": "6",
+    "name": "Disturbed",
+    "relatedId": "3"
+  },
+  {
+    "_id": "7",
+    "name": "Immortalized",
+    "relatedId": "6"
+  },
+  {
+    "_id": "8",
+    "name": "The Sound of Silence",
+    "relatedId": "7"
+  },
+  {
+    "_id": "9",
+    "name": "Once",
+    "relatedId": "4"
+  },
+  {
+    "_id": "10",
+    "name": "Gêneros de filmes"
+  }
+]
