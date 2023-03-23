@@ -10,3 +10,5 @@ package-lock.json
 
 # MISC
 .DS_Store
+
+**/build
