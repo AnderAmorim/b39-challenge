@@ -9,7 +9,6 @@ routes.get('/', MenuController.getAll)
 routes.delete('/:id', menuValidation.idDelete, MenuController.delete)
 routes.delete('/',MenuController.deleteAll)
 
-
 routes.get('/allByMongo', MenuController.getAllWithMongodbOnly)
 
 export default routes
