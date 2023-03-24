@@ -10,4 +10,6 @@ const CounterSchema = new Schema({
   nameCounter: { type: String, require: true }
 });
 
+CounterSchema.index({ nameCounter: 1 });
+
 export default model<ICounter>('counter', CounterSchema, 'counter')

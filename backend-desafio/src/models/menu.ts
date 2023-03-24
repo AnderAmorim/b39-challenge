@@ -18,4 +18,7 @@ const schemaMenuDb = new Schema<IMenu>({
     }
 })
 
+schemaMenuDb.index({ id: 1 });
+
+
 export default model<IMenu>('menu', schemaMenuDb, 'menu')
