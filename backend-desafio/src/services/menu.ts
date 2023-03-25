@@ -26,7 +26,7 @@ const organizeMenuStructure = function(allIMenuItemsFromDb: IMenuItemFromDB[]): 
     const haveParent = itemFromDB.relatedId;
 
     if (haveParent) {
-      parentMenu = searchParent(menuItemsFromDb, itemFromDB);
+      parentMenu = searchParent(menuItemsFromDb, itemFromDB); 
     }
 
     if (parentMenu) {
@@ -41,10 +41,10 @@ const organizeMenuStructure = function(allIMenuItemsFromDb: IMenuItemFromDB[]): 
 }
 
 
-const clearMenu = function (arr: IMenuItem[]): IMenuItem[] {
+const clearMenu = function (arrToClear: IMenuItem[]): IMenuItem[] {
 
   const transformSubmenus = function(submenus: IMenuItem[]): IMenuItem[] {
-    const transformedSubmenus: IMenuItem[] = [];
+    const transformedAllSubmenus: IMenuItem[] = [];
   
     for (const submenu of submenus) {
       const transformedSubmenu: IMenuItem = {
@@ -56,22 +56,21 @@ const clearMenu = function (arr: IMenuItem[]): IMenuItem[] {
         transformedSubmenu.submenus = transformSubmenus(submenu.submenus);
       }
   
-      transformedSubmenus.push(transformedSubmenu);
+      transformedAllSubmenus.push(transformedSubmenu);
     }
   
-    return transformedSubmenus;
+    return transformedAllSubmenus;
   }
 
   const transformedArr: IMenuItem[] = [];
 
-  for (const obj of arr) {
+  for (const arrItem of arrToClear) {
     const transformedObj: IMenuItem = {
-      id: obj.id,
-      name: obj.name,
+      id: arrItem.id,
+      name: arrItem.name,
     };
-    clearMenu
-    if (obj.submenus) {
-      transformedObj.submenus = transformSubmenus(obj.submenus);
+    if (arrItem.submenus) {
+      transformedObj.submenus = transformSubmenus(arrItem.submenus);
     }
 
     transformedArr.push(transformedObj);
@@ -83,13 +82,6 @@ const clearMenu = function (arr: IMenuItem[]): IMenuItem[] {
 const existsParentMenu = async function(parentId: number): Promise<IMenu | undefined> {
   const menu = await Menu.findOne({ id: parentId }) as IMenu | undefined
   return menu
-}
-
-const updateParentMenu = async function (parentId: number, childrenId: number): Promise<void> {
-  await Menu.updateOne(
-    { id: parentId },
-    { $push: { childrenId } }
-  )
 }
 
 const deleteItemMenu = async function (menuItem:IMenuItemFromDB, newRelatedIdToChildrenOfExcludedItem:number|null):Promise<void>{
@@ -153,7 +145,6 @@ interface IMenuService {
   deleteItemMenu: (menuItem: IMenuItemFromDB, newRelatedIdToChildrenOfExcludedItem: number | null) => Promise<void>;
   getAllWIthMongoQuery: () => Promise<IMenuItemFromDB[]>;
   existsParentMenu: (parentId: number) => Promise<IMenu | undefined>;
-  updateParentMenu: (parentId: number, childrenId: number) => Promise<void>;
 }
 
 export const MenuService:IMenuService = {
@@ -162,6 +153,5 @@ export const MenuService:IMenuService = {
   deleteItemMenu,
   getAllWIthMongoQuery,
   existsParentMenu,
-  updateParentMenu
 }
 

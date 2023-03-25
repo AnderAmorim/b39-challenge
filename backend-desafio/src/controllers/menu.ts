@@ -14,11 +14,10 @@ export default {
         const counterName:string = 'menucounter'
         const idIncremental:number = await counterIncrement(counterName)
 
+        // transaction here
         if (parentInformed) {
             parentMenu = await MenuService.existsParentMenu(relatedId)
             if (!parentMenu) return res.status(400).json({ message: 'Related menu not found' })
-
-            await MenuService.updateParentMenu(parentMenu.id, idIncremental)
         }
 
         const { _id: id } = await Menu.create({ name, relatedId, id: idIncremental })
@@ -53,9 +52,7 @@ export default {
     getAll: async (_: Request, res: Response): Promise<Response> => {
         let allItems = await Menu.find() as IMenuItemFromDB[]
 
-        if (allItems.length) {
-            allItems = MenuService.organizeMenuStructure(allItems)
-        }
+        allItems = MenuService.organizeMenuStructure(allItems)
 
         const cleanMenu = MenuService.clearMenu(allItems)
 
