@@ -88,7 +88,6 @@ const deleteItemMenu = async function (menuItem:IMenuItemFromDB, newRelatedIdToC
     // await mongoose.connection.transaction(async (session) => {
       await Menu.deleteOne({ id: menuItem.id })//, { session });
       await Menu.updateMany({ relatedId: menuItem.id }, { relatedId: newRelatedIdToChildrenOfExcludedItem })//, { session });
-      await Menu.updateOne({ childrenId: { $all: [menuItem.id] } }, { $pull: { childrenId: menuItem.id } })//, { session });
     // })
 }
 
